@@ -64,3 +64,20 @@ class MySeleniumTests(StaticLiveServerTestCase):
         self.selenium.find_element(By.NAME, "is_staff").click()
         # guardar canvi
         self.selenium.find_element(By.NAME, "_save").click()
+        #cliquem  logout
+        self.selenium.find_element(By.XPATH, "//button[text()='Log out']").click()
+        #cliquem  login again
+        self.selenium.find_element(By.LINK_TEXT, "Log in again").click()
+        #fem el login amb l'usuari staff
+        # login staff
+        self.selenium.find_element(By.NAME, "username").send_keys("staff")
+        self.selenium.find_element(By.NAME, "password").send_keys("pirineus1234")
+        self.selenium.find_element(By.XPATH, "//input[@value='Log in']").click()
+        # anar a la pagina change password 
+        self.selenium.get('%s%s' % (self.live_server_url, '/admin/password_change/'))
+        #cliquem canvi de password i fegim old password mes dos vegades el nou
+        self.selenium.find_element(By.NAME, "old_password").send_keys("pirineus1234")
+        self.selenium.find_element(By.NAME, "new_password1").send_keys("pirineus12345")
+        self.selenium.find_element(By.NAME, "new_password2").send_keys("pirineus12345")
+        # cliquem  canvi de contrasenya
+        self.selenium.find_element(By.XPATH, "//input[@value='Change my password']").click() 
