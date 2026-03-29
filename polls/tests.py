@@ -75,7 +75,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         self.selenium.find_element(By.XPATH, "//input[@value='Log in']").click()
         # anar a la pagina change password 
         self.selenium.get('%s%s' % (self.live_server_url, '/admin/password_change/'))
-        #cliquem canvi de password i fegim old password mes dos vegades el nou
+        #cliquem canvi de password i afegim old password mes dos vegades el nou
         self.selenium.find_element(By.NAME, "old_password").send_keys("pirineus1234")
         self.selenium.find_element(By.NAME, "new_password1").send_keys("pirineus12345")
         self.selenium.find_element(By.NAME, "new_password2").send_keys("pirineus12345")
